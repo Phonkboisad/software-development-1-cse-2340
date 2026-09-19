@@ -1,68 +1,300 @@
-/* styles.css */
-body {
+/* ==========================================================================
+   RESET & BASE CONFIGURATION
+   ========================================================================== */
+* {
   margin: 0;
-  font-family: 'Arial', sans-serif;
-  color: #333;
-  background: #f9f9f9;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #232529;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #101c33;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Pixso 1280px Canvas Wrapper */
+.canvas-wrapper {
+  width: 1280px;
+  background-color: #ffffff;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   SECTION 1: HERO (1280 x 800)
+   ========================================================================== */
+.section-hero {
+  width: 1280px;
+  height: 800px;
+  background-color: #ffffff;
+  position: relative;
+}
+
+/* Navbar */
 .navbar {
+  width: 1280px;
+  height: 65px;
+  background-color: #060b17;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 58.5px 0 30px;
+}
+
+
+.nav-logo {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Navigation Links (Pixso: Right 58.5px, Top 29px, 274 x 24px) */
+.nav-links {
+  position: relative;
+  width: 274px;
+  height: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #222;
-  padding: 15px 30px;
+  margin-left: auto;
 }
 
-.logo {
-  font-size: 1.5em;
-  font-weight: bold;
-  color: #fff;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
-
-.nav-links a {
-  color: #fff;
+.nav-link {
   text-decoration: none;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
   font-weight: 500;
+  color: #e2e8f0;
+  transition: color 0.2s ease;
 }
 
-.hero {
-  background: url('Background.png') no-repeat center center/cover;
-  color: white;
+.nav-link.active {
+  color: #e67e22;
+  font-weight: 700;
+}
+
+.nav-link:hover {
+  color: #f39c12;
+}
+
+/* Hero Banner Graphic (Pixso: 1280 x 511.87px) */
+.hero-banner-container {
+  width: 1280px;
+  height: 511.87px;
+  overflow: hidden;
+}
+
+.hero-banner-img {
+  width: 1280px;
+  height: 511.87px;
+  display: block;
+  object-fit: cover;
+}
+
+/* Lab Title (Pixso: 990 x 53px, Top margin 69.13px, Left/Right 145px) */
+.lab-title-container {
+  width: 990px;
+  height: 53px;
+  margin: 69.13px 145px 0 145px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lab-title {
+  font-family: 'Merriweather', serif;
+  font-size: 33px;
+  font-weight: 400;
+  color: #121e36;
   text-align: center;
-  padding: 120px 20px;
+  letter-spacing: -0.3px;
 }
 
-.hero h1 {
-  font-size: 2.5em;
-  margin-bottom: 10px;
+/* ==========================================================================
+   SECTION 2: PURPOSE
+   ========================================================================== */
+.section-purpose {
+  width: 1280px;
+  background-color: #ffffff;
+  padding-top: 55px;
+  padding-bottom: 75px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.hero p {
-  font-size: 1.2em;
+/* Divider Line (Width: 885px) */
+.purpose-divider {
+  width: 885px;
+  height: 1.5px;
+  background-color: #3b4556;
+  border: none;
+  margin: 0 auto 42px auto;
 }
 
-.purpose, .contents {
-  padding: 60px 20px;
-  max-width: 900px;
-  margin: auto;
+/* Purpose Title */
+.purpose-heading {
+  font-family: 'Merriweather', serif;
+  font-size: 32px;
+  font-weight: 900;
+  color: #0d172a;
   text-align: center;
+  margin-bottom: 53px; /* Pixso: 53px gap */
 }
 
-.contents ul {
-  list-style: none;
-  padding: 0;
+/* Purpose Text (Pixso: Left 415px, Right 415px -> Width 450px) */
+.purpose-text-container {
+  width: 450px;
+  margin: 0 415px;
 }
 
-.contents li {
-  background: #eee;
-  margin: 10px 0;
-  padding: 15px;
-  border-radius: 8px;
+.purpose-paragraph {
+  font-family: 'Merriweather', serif;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #334155;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.purpose-paragraph strong {
+  font-weight: 800;
+  color: #0f172a;
+}
+
+/* ==========================================================================
+   SECTION 3: CONTENTS (1280 x 640) - BOTTOM CARDS
+   ========================================================================== */
+.section-contents {
+  width: 1280px;
+  height: 640px;
+  position: relative;
+  overflow: hidden;
+  background-color: #081328;
+}
+
+/* Explicit Background Image Layer behind all cards */
+.contents-bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1280px;
+  height: 640px;
+  object-fit: cover;
+  z-index: 1; /* Sits behind foreground content */
+  pointer-events: none;
+}
+
+/* Foreground Container sitting above the image */
+.contents-content {
+  position: relative;
+  z-index: 2; /* Sits on top of the background image */
+  width: 1280px;
+  height: 640px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Section Title */
+.contents-title {
+  font-family: 'Merriweather', serif;
+  font-size: 31px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 60px;
+}
+
+/* Cards Wrapper (Pixso: Width 1014px, Left/Right Margins 133px, Top: 150px) */
+.cards-grid {
+  position: absolute;
+  top: 150px;
+  width: 1014px;
+  margin: 0 133px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Rows */
+.cards-row {
+  width: 1014px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Row 1 (Pixso: Height 150px, Gap to row 2 = 60px to place row 2 at Top Y: 360px) */
+.cards-row.row-1 {
+  height: 150px;
+  margin-bottom: 60px;
+}
+
+/* Row 2 (Pixso: Height 130px) */
+.cards-row.row-2 {
+  height: 130px;
+}
+
+/* Individual Cards */
+.card {
+  width: 304px;
+  height: 100%;
+  background: rgba(14, 27, 52, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(243, 156, 18, 0.5);
+}
+
+.card-title {
+  font-family: 'Merriweather', serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.card-desc {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #9cb1d1;
+  text-align: center;
 }
