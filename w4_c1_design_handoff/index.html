@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foundry Studio</title>
+    <style>
+      :root {
+        --bg: #0a0b0d;
+        --bg-soft: #14181d;
+        --panel: rgba(21, 27, 34, 0.8);
+        --panel-strong: rgba(15, 19, 25, 0.92);
+        --line: rgba(255, 255, 255, 0.08);
+        --text: #f3f3f2;
+        --muted: #b5b8bb;
+        --gold: #d2985d;
+        --gold-soft: #f3be7b;
+        --orange: #ff9a3d;
+        --shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+      }
+
+      * { box-sizing: border-box; }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, "Segoe UI", sans-serif;
+        background:
+          linear-gradient(180deg, rgba(5, 8, 12, 0.72), rgba(5, 8, 12, 0.82)),
+          url("Images/Background.png") center/cover no-repeat fixed;
+        color: var(--text);
+      }
+
+      a { color: inherit; text-decoration: none; }
+      img { display: block; max-width: 100%; }
+
+      .page {
+        width: min(1180px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 24px 0 18px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #f6f2ea;
+      }
+
+      .brand img {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+        filter: drop-shadow(0 0 12px rgba(211, 152, 93, 0.5));
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        color: var(--muted);
+        font-size: 0.96rem;
+      }
+
+      .nav a {
+        transition: color 0.2s ease;
+      }
+
+      .nav a:hover {
+        color: var(--text);
+      }
+
+      .nav-cta {
+        padding: 12px 18px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+        gap: 30px;
+        min-height: 75vh;
+        padding: 24px 0 56px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--gold-soft);
+        border-radius: 999px;
+        padding: 8px 14px;
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--orange), var(--gold));
+        box-shadow: 0 0 18px rgba(255, 154, 61, 0.8);
+      }
+
+      h1 {
+        margin: 22px 0 18px;
+        font-size: clamp(3rem, 6vw, 6rem);
+        line-height: 0.98;
+        letter-spacing: -0.06em;
+        max-width: 620px;
+      }
+
+      .hero p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1.08rem;
+        line-height: 1.8;
+        max-width: 560px;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 18px;
+        margin-top: 28px;
+      }
+
+      .button-primary,
+      .button-secondary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 54px;
+        padding: 0 22px;
+        border-radius: 999px;
+        font-weight: 700;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .button-primary {
+        background: linear-gradient(135deg, var(--gold-soft), var(--orange));
+        color: #171410;
+        box-shadow: 0 20px 40px rgba(255, 159, 77, 0.25);
+      }
+
+      .button-secondary {
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--text);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .button-primary:hover,
+      .button-secondary:hover {
+        transform: translateY(-2px);
+      }
+
+      .metrics {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 26px;
+        margin-top: 36px;
+      }
+
+      .metric {
+        min-width: 130px;
+      }
+
+      .metric strong {
+        display: block;
+        font-size: 1.7rem;
+        line-height: 1;
+        margin-bottom: 6px;
+        color: var(--text);
+      }
+
+      .metric span {
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      .visual-panel {
+        position: relative;
+        padding: 18px;
+      }
+
+      .visual-panel::before {
+        content: "";
+        position: absolute;
+        inset: 24px -10px 12px 12px;
+        border-radius: 28px;
+        background: linear-gradient(135deg, rgba(211, 152, 93, 0.24), rgba(255, 255, 255, 0.06));
+        filter: blur(24px);
+        z-index: 0;
+      }
+
+      .visual-card {
+        position: relative;
+        z-index: 1;
+        border-radius: 28px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(11, 16, 22, 0.64);
+        box-shadow: var(--shadow);
+      }
+
+      .visual-card img {
+        width: 100%;
+        height: min(62vw, 620px);
+        object-fit: cover;
+      }
+
+      .floating-card {
+        position: absolute;
+        right: 42px;
+        bottom: -8px;
+        z-index: 2;
+        width: min(286px, 62%);
+        border-radius: 20px;
+        background: rgba(18, 23, 29, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 18px 18px 16px;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(12px);
+      }
+
+      .floating-card small {
+        display: inline-block;
+        color: var(--gold-soft);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-size: 0.68rem;
+      }
+
+      .floating-card strong {
+        display: block;
+        font-size: 1.25rem;
+        margin-top: 12px;
+      }
+
+      .floating-card p {
+        margin: 10px 0 0;
+        color: var(--muted);
+        line-height: 1.6;
+        font-size: 0.85rem;
+      }
+
+      .info-strip {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+        margin: 8px 0 32px;
+      }
+
+      .info-box {
+        background: rgba(18, 22, 27, 0.7);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 24px 22px;
+        color: var(--muted);
+      }
+
+      .info-box strong {
+        display: block;
+        font-size: 1.28rem;
+        color: var(--text);
+        margin-bottom: 10px;
+      }
+
+      @media (max-width: 920px) {
+        .topbar {
+          flex-wrap: wrap;
+        }
+
+        .nav {
+          order: 3;
+          width: 100%;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 16px 22px;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+          min-height: auto;
+          padding-top: 10px;
+        }
+
+        .info-strip {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .page {
+          width: min(100% - 24px, 1180px);
+        }
+
+        .brand {
+          font-size: 0.72rem;
+        }
+
+        .nav-cta {
+          width: 100%;
+          text-align: center;
+        }
+
+        .actions {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .button-primary,
+        .button-secondary {
+          width: 100%;
+        }
+
+        .floating-card {
+          position: static;
+          width: 100%;
+          margin-top: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar">
+        <div class="brand" aria-label="Foundry Studio home">
+          <img src="Images/foundryICON.png" alt="Foundry Studio icon" />
+          <span>Foundry</span>
+        </div>
+
+        <nav class="nav" aria-label="Main navigation">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#insights">Insights</a>
+          <a href="#contact">Contact</a>
+          <a class="nav-cta" href="#booking">Book a call</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero" id="home">
+          <div>
+            <div class="eyebrow">Design for modern teams</div>
+            <h1>Build ideas that feel real.</h1>
+            <p>
+              We turn complex product thinking into polished digital experiences,
+              strategic brand systems, and immersive interactions that people can
+              trust and remember.
+            </p>
+
+            <div class="actions">
+              <a class="button-primary" href="#booking">Get started</a>
+              <a class="button-secondary" href="#about">Watch demo</a>
+            </div>
+
+            <div class="metrics" aria-label="Key performance metrics">
+              <div class="metric">
+                <strong>12k+</strong>
+                <span>Creators trained</span>
+              </div>
+              <div class="metric">
+                <strong>94%</strong>
+                <span>Program completion</span>
+              </div>
+              <div class="metric">
+                <strong>4.9/5</strong>
+                <span>Average rating</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="visual-panel" aria-label="Featured design visual">
+            <div class="visual-card">
+              <img src="Images/foundryBanner.png" alt="Modern studio design banner" />
+            </div>
+
+            <div class="floating-card">
+              <small>Studio focus</small>
+              <strong>Product design</strong>
+              <p>
+                We help founders, teams, and communities turn early concepts into
+                strong digital products with clarity and momentum.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="info-strip" id="about">
+          <div class="info-box">
+            <strong>Strategy-first thinking</strong>
+            Clarify the problem, define the customer journey, and align each design
+            decision around measurable outcomes.
+          </div>
+
+          <div class="info-box">
+            <strong>Practical creative process</strong>
+            From identity to interface systems, every layer is built to be clear,
+            usable, and easy to extend.
+          </div>
+
+          <div class="info-box">
+            <strong>Fast collaboration</strong>
+            Lean workshops, rapid feedback loops, and transparent delivery keep your
+            team moving without friction.
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
