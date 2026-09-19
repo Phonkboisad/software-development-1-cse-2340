@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Foundry Studio</title>
+    <title>FOUNDRY - Computer Vision, Agents and Multimodal Lab</title>
     <style>
       :root {
         --bg: #0a0b0d;
@@ -98,7 +98,7 @@
         align-items: center;
         gap: 30px;
         min-height: 75vh;
-        padding: 24px 0 56px;
+        padding: 24px 0 32px;
       }
 
       .eyebrow {
@@ -289,6 +289,32 @@
         margin-bottom: 10px;
       }
 
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+        margin: 24px 0 40px;
+      }
+
+      .feature-card {
+        background: rgba(18, 22, 27, 0.8);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 22px;
+      }
+
+      .feature-card h3 {
+        margin: 0 0 10px;
+        color: var(--text);
+        font-size: 1.25rem;
+      }
+
+      .feature-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
       @media (max-width: 920px) {
         .topbar {
           flex-wrap: wrap;
@@ -308,7 +334,8 @@
           padding-top: 10px;
         }
 
-        .info-strip {
+        .info-strip,
+        .feature-grid {
           grid-template-columns: 1fr;
         }
       }
@@ -356,8 +383,8 @@
         <nav class="nav" aria-label="Main navigation">
           <a href="#home">Home</a>
           <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#insights">Insights</a>
+          <a href="#projects">Projects</a>
+          <a href="#research">Research</a>
           <a href="#contact">Contact</a>
           <a class="nav-cta" href="#booking">Book a call</a>
         </nav>
@@ -366,17 +393,19 @@
       <main>
         <section class="hero" id="home">
           <div>
-            <div class="eyebrow">Design for modern teams</div>
+            <div class="eyebrow">Computer Vision, Agents and Multimodal Lab</div>
             <h1>Build ideas that feel real.</h1>
             <p>
-              We turn complex product thinking into polished digital experiences,
-              strategic brand systems, and immersive interactions that people can
-              trust and remember.
+              FOUNDRY Lab is dedicated to advancing intelligent AI systems that can
+              perceive, understand, reason, and act by integrating information across
+              multiple modalities, including vision, language, audio, and autonomous
+              agents. We design research and digital experiences that connect complex
+              systems with real-world impact.
             </p>
 
             <div class="actions">
-              <a class="button-primary" href="#booking">Get started</a>
-              <a class="button-secondary" href="#about">Watch demo</a>
+              <a class="button-primary" href="#projects">Get started</a>
+              <a class="button-secondary" href="#about">Learn more</a>
             </div>
 
             <div class="metrics" aria-label="Key performance metrics">
@@ -397,15 +426,15 @@
 
           <div class="visual-panel" aria-label="Featured design visual">
             <div class="visual-card">
-              <img src="Images/foundryBanner.png" alt="Modern studio design banner" />
+              <img src="Images/foundryBanner.png" alt="Foundry design banner" />
             </div>
 
             <div class="floating-card">
               <small>Studio focus</small>
               <strong>Product design</strong>
               <p>
-                We help founders, teams, and communities turn early concepts into
-                strong digital products with clarity and momentum.
+                We help teams turn early ideas into useful systems with clarity,
+                momentum, and measurable outcomes.
               </p>
             </div>
           </div>
@@ -413,15 +442,16 @@
 
         <section class="info-strip" id="about">
           <div class="info-box">
-            <strong>Strategy-first thinking</strong>
-            Clarify the problem, define the customer journey, and align each design
-            decision around measurable outcomes.
+            <strong>Purpose</strong>
+            FOUNDRY Lab advances intelligent AI systems by combining vision,
+            language, audio, and autonomous agents to solve meaningful research and
+            product challenges.
           </div>
 
           <div class="info-box">
             <strong>Practical creative process</strong>
-            From identity to interface systems, every layer is built to be clear,
-            usable, and easy to extend.
+            From research to interface systems, every design decision is grounded in
+            clarity, usability, and the ability to scale with real teams.
           </div>
 
           <div class="info-box">
@@ -430,7 +460,37 @@
             team moving without friction.
           </div>
         </section>
+
+        <section id="projects">
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h3>Multimodal AI</h3>
+              <p>Vision + language + audio systems that understand context, intent, and action.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Computer Vision</h3>
+              <p>Medical imaging, perception, and human-centered visual intelligence for complex problems.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Agentic AI</h3>
+              <p>Autonomous systems designed for real-time reasoning and adaptive decision-making.</p>
+            </div>
+            <div class="feature-card">
+              <h3>AI for Healthcare</h3>
+              <p>Clinical decision support built to improve diagnosis and care coordination.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Research Mentorship</h3>
+              <p>Student-led innovation guided by collaborative, hands-on learning and experimentation.</p>
+            </div>
+            <div class="feature-card">
+              <h3>Collaboration</h3>
+              <p>Research partnerships that connect academia and industry around shared goals.</p>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   </body>
 </html>
+
